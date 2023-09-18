@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFusion Hub</title>
+    <style>
+        /* Your existing CSS styles */
+
+        /* Additional Styles */
+        /* Add your additional CSS styles here */
+
+        /* Styles for Video Player */
+        .video-container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        video {
+            width: 100%;
+        }
+
+        /* Styles for Social Media Links */
+        .social-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            font-size: 20px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        /* Styles for Chat Widget */
+        .chat-widget {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .chat-messages {
+            max-height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .chat-input {
+            width: 80%;
+            padding: 5px;
+            margin-right: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .send-button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Styles for Google Maps Integration */
+        .map-container {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="container">
+        <h1>Welcome to TechFusion Hub</h1>
+        <p>Explore the Power of Frontend Development</p>
+
+        <!-- Interactive Button -->
+        <button id="clickMe">Click Me</button>
+        <p id="message"></p>
+
+        <!-- Form -->
+        <form id="myForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+
+            <label>Choose your favorite language:</label><br>
+            <input type="radio" id="java" name="language" value="java">
+            <label for="java">Java</label><br>
+            <input type="radio" id="python" name="language" value="python">
+            <label for="python">Python</label><br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- Image Gallery -->
+        <div id="imageGallery">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+
+        <!-- Todo List -->
+        <h2>Todo List</h2>
+        <ul id="todoList"></ul>
+        <input type="text" id="newTask" placeholder="New Task">
+        <button id="addTask">Add Task</button>
+
+        <!-- Video Player -->
+        <div class="video-container">
+            <h2>Featured Video</h2>
+            <video controls>
+                <source src="sample.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+
+        <!-- Chat Widget -->
+        <div class="chat-widget">
+            <h2>Chat with Us</h2>
+            <div class="chat-messages">
+                <!-- Chat messages go here -->
+            </div>
+            <input type="text" class="chat-input" placeholder="Type your message...">
+            <button class="send-button">Send</button>
+        </div>
+
+        <!-- Google Maps Integration -->
+        <div class="map-container">
+            <h2>Our Location</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15607.07504729363!2d-122.08433050000001!3d37.42200469999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7ebe44a33d49%3A0x888e3b63c1278492!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1613690592509!5m2!1sen!2sus" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+
+        <!-- React Component -->
+        <div id="react-root"></div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Modal Header</h2>
+            <p>Modal content goes here.</p>
+        </div>
+    </div>
+
+    <div class="carousel-container">
+        <button class="carousel-button prev" onclick="plusSlides(-1)">&#10094;</button>
+        <div class="carousel-slide">
+            <img src="slide1.jpg" alt="Slide 1">
+        </div>
+        <div class="carousel-slide">
+            <img src="slide2.jpg" alt="Slide 2">
+        </div>
+        <div class="carousel-slide">
+            <img src="slide3.jpg" alt="Slide 3">
+        </div>
+        <button class="carousel-button next" onclick="plusSlides(1)">&#10095;</button>
+    </div>
+
+    <script>
+        // Interactive Button
+        document.getElementById('clickMe').addEventListener('click', function() {
+            document.getElementById('message').textContent = 'You clicked the button!';
+        });
+
+        // Form Submission
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var name = document.getElementById('name').value;
+            alert('Hello, ' + name + '!');
+        });
+
+        // Todo List
+        document.getElementById('addTask').addEventListener('click', function() {
+            var task = document.getElementById('newTask').value;
+            var todoList = document.getElementById('todoList');
+            var listItem = document.createElement('li');
+            listItem.textContent = task;
+            todoList.appendChild(listItem);
+            document.getElementById('newTask').value = '';
+        });
+
+        // Video Player
+        var video = document.querySelector('.video-container video');
+        video.addEventListener('click', function() {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+
+        // Social Media Links
+        var socialLinks = document.querySelectorAll('.social-links a');
+        socialLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                alert('Opening ' + this.innerText);
+            });
+        });
+
+        // Chat Widget
+        var chatInput = document.querySelector('.chat-input');
+        var chatMessages = document.querySelector('.chat-messages');
+        var sendButton = document.querySelector('.send-button');
+
+        sendButton.addEventListener('click', function() {
+            var messageText = chatInput.value;
+            if (messageText.trim() !== '') {
+                var newMessage = document.createElement('div');
+                newMessage.classList.add('message', 'outgoing');
+                newMessage.textContent = messageText;
+                chatMessages.appendChild(newMessage);
+                chatInput.value = '';
+
+                // Simulate incoming message after a delay
+                setTimeout(function() {
+                    var incomingMessage = document.createElement('div');
+                    incomingMessage.classList.add('message', 'incoming');
+                    incomingMessage.textContent = 'Thank you for your message! Our team will get back to you shortly.';
+                    chatMessages.appendChild(incomingMessage);
+                }, 1500);
+            }
+        });
+
+        // Google Maps Integration
+        // No additional JavaScript required for Google Maps
+
+        // React Component
+        class MyComponent extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <h2>React Component</h2>
+                        <p>This is a React component embedded in the page.</p>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<MyComponent />, document.getElementById('react-root'));
+
+        // Carousel
+        var slideIndex = 1;
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName('carousel-slide');
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            slides[slideIndex - 1].style.display = 'block';
+        }
+
+        showSlides(slideIndex);
+    </script>
+</body>
+
+</html>
